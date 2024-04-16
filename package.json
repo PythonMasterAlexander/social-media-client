@@ -7,7 +7,7 @@
   "scripts": {
     "build": "sass src/scss:dist/css",
     "start": "sass --watch src/scss:dist/css & live-server",
-    "check-prettier": "prettier ./src/**/*.* --check",
+    "check-format": "prettier ./src/**/*.* --check",
     "format": "prettier ./src/**/*.* --write",
     "lint": "eslint ./src/**/*.js",
     "fix-lint": "eslint ./**/*.js--cache --fix",
