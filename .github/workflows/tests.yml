@@ -26,3 +26,8 @@ jobs:
 
       - name: Run Tests
         run: npm run unit-test
+
+      - name: run cypress tests with electron
+        uses: cypress-io/github-action@v4
+        with:
+          browser: electron
