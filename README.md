@@ -1,6 +1,10 @@
 # Noroff Workflow course assignment
 
+## Running deploy and tests Actions on PR
+
 [![Deploy static content to Pages](https://github.com/PythonMasterAlexander/social-media-client/actions/workflows/pages.yml/badge.svg)](https://github.com/PythonMasterAlexander/social-media-client/actions/workflows/pages.yml)
+
+[![Automated testing with unit-test and end-to-end tests](https://github.com/PythonMasterAlexander/social-media-client/actions/workflows/tests.yml/badge.svg)](https://github.com/PythonMasterAlexander/social-media-client/actions/workflows/tests.yml)
 
 ![image](https://user-images.githubusercontent.com/25181517/192108372-f71d70ac-7ae6-4c0d-8395-51d8870c2ef0.png) ![image](https://user-images.githubusercontent.com/25181517/192108374-8da61ba1-99ec-41d7-80b8-fb2f7c0a4948.png)
 
@@ -67,16 +71,10 @@ Check Lint:
 npm run lint
 ```
 
-Run unit-test:
+Run unit tests and e2e tests:
 
 ```
-
-```
-
-Run end-to-end-test:
-
-```
-
+npm run test
 ```
 
 ## Contributing
