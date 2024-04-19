@@ -1,6 +1,6 @@
 //import { login } from '../js/api/auth/login.js'
 
-jest.mock('fetch')
+//jest.mock('fetch')
 jest.mock('../js/storage/index.js', () => ({
   save: jest.fn(),
 }))
