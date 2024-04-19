@@ -1,5 +1,5 @@
-const correctEmail = 'fireworks@noroff.no'
-const correctPassword = 'fireworks'
+const email = 'AleHar77338@stud.noroff.no'
+const password = 'Am4M#9!xuHJ"wkt'
 
 describe('Logout test', () => {
   it('should allow a valid user to log out', () => {
@@ -8,8 +8,8 @@ describe('Logout test', () => {
     cy.get('#registerModal').contains('Login').click()
     cy.wait(500)
     cy.get('#loginForm').should('be.visible')
-    cy.get('#loginEmail').type(correctEmail)
-    cy.get('#loginPassword').type(correctPassword)
+    cy.get('#loginEmail').type(email)
+    cy.get('#loginPassword').type(password)
     cy.get('button[type=submit]').contains('Login').click()
     cy.wait(2000)
     // check storage for token

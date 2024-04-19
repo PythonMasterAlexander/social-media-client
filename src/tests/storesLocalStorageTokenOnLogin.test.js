@@ -31,8 +31,8 @@ describe('login', () => {
   })
 
   it('Stores the token in localStorage', async () => {
-    const email = 'mail@example.com'
-    const password = 'password'
+    const email = 'testmail@dummy.com'
+    const password = 'helloworld'
 
     await login(email, password)
 
