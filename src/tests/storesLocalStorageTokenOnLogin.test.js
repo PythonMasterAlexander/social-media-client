@@ -1,42 +1,40 @@
-import { login } from '../js/api/auth/login.js'
+//import { login } from '../js/api/auth/login.js'
 
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    ok: true,
-    json: () => Promise.resolve({ accessToken: '123456789' }),
-    statusText: 'OK',
-  })
-)
-
-const mockStorage = (() => {
-  let store = {}
-  return {
-    getItem(key) {
-      return store[key]
-    },
-    setItem(key, value) {
-      store[key] = value.toString()
-    },
-    clear() {
-      store = {}
-    },
-  }
-})()
-
-Object.defineProperty(global, 'localStorage', { value: mockStorage })
+jest.mock('fetch')
+jest.mock('../js/storage/index.js', () => ({
+  save: jest.fn(),
+}))
 
 describe('login', () => {
   beforeEach(() => {
-    localStorage.clear()
+    jest.clearAllMocks() // Clear mocks between tests
   })
 
-  it('Stores the token in localStorage', async () => {
+  it('stores the token and profile in storage on successful login', async () => {
     const email = 'testmail@dummy.com'
     const password = 'helloworld'
 
-    await login(email, password)
+    fetch.mockResolvedValueOnce(
+      Promise.resolve({
+        ok: true,
+        json: () =>
+          Promise.resolve({
+            accessToken: '123456789',
+            // Other profile data
+          }),
+      })
+    )
 
-    const token = JSON.parse(localStorage.getItem('token'))
-    expect(token).toBe('123456789')
+    //const profile = await login(email, password);
+
+    expect(fetch).toHaveBeenCalledWith(`${apiPath}/social/auth/login`, {
+      method: 'post',
+      body: JSON.stringify({ email, password }),
+      headers: headers('application/json'),
+    })
+
+    expect(save).toHaveBeenCalledTimes(2)
+    expect(save).toHaveBeenCalledWith('token', '123456789')
+    expect(save).toHaveBeenCalledWith('profile')
   })
 })
