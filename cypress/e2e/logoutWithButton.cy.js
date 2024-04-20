@@ -12,15 +12,15 @@ describe('Logout test', () => {
     cy.get('#loginPassword').type(password)
     cy.get('button[type=submit]').contains('Login').click()
     cy.wait(2000)
-    // check storage for token
+
     cy.window().then((window) => {
-      const token = window.localStorage.getItem('token') || window.sessionStorage.getItem('token')
+      const token = window.localStorage.getItem('token')
       expect(token).to.be.a('string')
       cy.wait(2000)
       cy.get('button[data-auth=logout]').contains('Logout').click()
       cy.wait(500)
       cy.window().then((window) => {
-        const tokenAfterLogout = window.localStorage.getItem('token') || window.sessionStorage.getItem('token')
+        const tokenAfterLogout = window.localStorage.getItem('token')
         expect(tokenAfterLogout).to.be.null
       })
     })
