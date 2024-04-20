@@ -6,7 +6,7 @@ jest.mock('../js/storage/index.js', () => ({
 }))
 
 describe('logout', () => {
-  it('removes the token from storage and calls API', async () => {
+  it('Remove token from storage on logout', async () => {
     logout()
 
     expect(storage.remove).toHaveBeenCalledTimes(2)

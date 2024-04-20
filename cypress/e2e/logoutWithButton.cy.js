@@ -1,7 +1,7 @@
 const email = 'AleHar77338@stud.noroff.no'
 const password = 'Am4M#9!xuHJ"wkt'
 
-describe('Logout test', () => {
+describe('Logout user', () => {
   it('should allow a valid user to log out', () => {
     cy.visit('/')
     cy.wait(500)
